@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ergonomische Grundregeln</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:tabMenu activeIndex="#{param.i}">
+                <p:menuitem value="Startseite" outcome="index.xhtml">
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                <p:menuitem value="Rettungskette" outcome="rettungskette.xhtml">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+                <p:menuitem value="Rechtliches" outcome="rechtliches.xhtml">
+                    <f:param name="i" value="2" />
+                </p:menuitem>
+                <p:menuitem value="Ergonomie?" outcome="ergonomie.xhtml">
+                    <f:param name="i" value="3" />
+                </p:menuitem>
+                <p:menuitem value="Regeln" outcome="regeln.xhtml">
+                    <f:param name="i" value="4" />
+                </p:menuitem>
+                <p:menuitem value="Kontakte" outcome="contacts.xhtml" >
+                    <f:param name="i" value="5" />
+                </p:menuitem>
+                <p:menuitem value="Sicherheitszeichen" outcome="sicherheitszeichen.xhtml">
+                    <f:param name="i" value="6" />
+                </p:menuitem>
+                <p:menuitem value="Gütesiegel" outcome="siegel.xhtml">
+                    <f:param name="i" value="7" />
+                </p:menuitem>
+            </p:tabMenu> 
+        </h:form>
+
+        <h:form>
+            <p:accordionPanel multiple="true" activeIndex="-1" style="margin-bottom:20px">
+                <p:tab title="Einige Grundregeln für einen Bildschirmarbeitsplatz">
+                    <h:panelGrid columns="1" cellpadding="10">
+                        <h:outputText value="-Regelmäßige Bildschirmpausen einlegen" />
+                        <h:outputText value="-Arbeitshaltung regelmäßig wechseln" />
+                        <h:outputText value="-Reflexionsarme Oberflächen" />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Dein Bürostuhl">
+                    <h:panelGrid columns="1" cellpadding="10">
+                        <h:outputText value="-Der Stuhl hat genug Platz, sodass du dich 
+                                      drehen kannst ohne anzustoßen" />
+                        <h:outputText value="-Dein Rücken ruht an der Lehne" />
+                        <h:outputText value="-Deine Füße stehen beim Sitzen fest auf dem
+                                      Boden und haben genug Freiraum" />
+                        <h:outputText value="-Die Stuhlhöhe ist so einzustellen, dass 
+                                      die Armlehnen auf Höhe der Tischkante sind" />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Dein Display">
+                    <h:panelGrid columns="1" cellpadding="10">
+                        <h:outputText value="-Die Display-Helligkeit ist an deine 
+                                      Sehstärke angepasst" />
+                        <h:outputText value="-Das Display ist auf eine Höhe eingestellt,
+                                      in der die Bildschirmoberkante auf oder leicht 
+                                      unter deiner Augenhöhe liegt" />
+                        <h:outputText value="-Die Entfernung zum Display ist von der 
+                                      Größe des Monitors abhängig, die 
+                                      Standard-Entfernung liegt bei 60 bis 80 cm" />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Deine Steuerungselemente">
+                    <h:panelGrid columns="1" cellpadding="10">
+                        <h:outputText value="-Handgelenke sind so abgelegt, dass sie nicht abknicken" />
+                        <h:outputText value="-Die Tastatur liegt nahe am Körper, um ein Vorbeugen zu vermeiden" />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+        </h:form>
+    </h:body>
+</html>

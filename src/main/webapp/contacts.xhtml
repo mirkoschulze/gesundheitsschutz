@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Wichtige Kontakte</title>
+    </h:head>
+    <style type="text/css">
+        .image-ring .ui-ring-item {
+            border:0 none;
+        }
+
+        .image-ring .ui-ring-item img {
+            width: 100%;
+        }
+
+        .ui-ring button {
+            font-size: 1em !important;
+        }
+
+        .value {
+            font-weight: bold;
+        }
+    </style>
+
+    <h:body>
+        <h:form>
+            <p:tabMenu activeIndex="#{param.i}">
+                <p:menuitem value="Startseite" outcome="index.xhtml">
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                <p:menuitem value="Rettungskette" outcome="rettungskette.xhtml">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+                <p:menuitem value="Rechtliches" outcome="rechtliches.xhtml">
+                    <f:param name="i" value="2" />
+                </p:menuitem>
+                <p:menuitem value="Ergonomie?" outcome="ergonomie.xhtml">
+                    <f:param name="i" value="3" />
+                </p:menuitem>
+                <p:menuitem value="Regeln" outcome="regeln.xhtml">
+                    <f:param name="i" value="4" />
+                </p:menuitem>
+                <p:menuitem value="Kontakte" outcome="contacts.xhtml" >
+                    <f:param name="i" value="5" />
+                </p:menuitem>
+                <p:menuitem value="Sicherheitszeichen" outcome="sicherheitszeichen.xhtml">
+                    <f:param name="i" value="6" />
+                </p:menuitem>
+                <p:menuitem value="Gütesiegel" outcome="siegel.xhtml">
+                    <f:param name="i" value="7" />
+                </p:menuitem>
+            </p:tabMenu> 
+        </h:form>
+        
+        <h:form>
+            <p:panel style="margin-bottom:20px">
+            <br/>
+                <h:outputText value="Durchgangsärzte sind Spezialisten der Chirurgie
+                              für den Schwerpunkt Arbeits- und Wegeunfälle"/>
+                <br/>
+                <br/>
+                <h:outputText value="Die Fachkraft für Arbeitssicherheit hat die
+                              Aufgabe den Arbeitsschutz und die Unfallverhütung 
+                              zu verbessern"/>
+                <br/>
+                <br/>
+                </p:panel>
+        </h:form>
+
+        <h:form id="form">
+            <p:ring id="basic" value="#{contactController.contacts}" var="contact">
+                <p:outputPanel style="text-align: center;" layout="block">
+                    #{contact.description}
+                    <br />
+                    <p:commandButton update=":form:contactDetail" icon="pi pi-search" title="View" oncomplete="PF('contactDialog').show();">
+                        <f:setPropertyActionListener value="#{contact}" target="#{contactController.selectedContact}" />
+                    </p:commandButton>
+                </p:outputPanel>
+            </p:ring>
+
+            <p:dialog header="Details" widgetVar="contactDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="contactDetail" style="text-align:center;" layout="block">
+                    <p:panelGrid  columns="2" rendered="#{not empty contactController.selectedContact}" columnClasses="value">
+                        <h:outputText value="Name:" />
+                        <h:outputText value="#{contactController.selectedContact.name}" />
+
+                        <h:outputText value="Adresse: " />
+                        <h:outputText value="#{contactController.selectedContact.address}" />
+
+                        <h:outputText value="Telefon:" />
+                        <h:outputText value="#{contactController.selectedContact.phone}"/>
+
+                        <h:outputText value="Erreichbar:" />
+                        <h:outputText value="#{contactController.selectedContact.hours}"/>
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
